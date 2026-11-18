@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ThreatScope — Intelligent URL &amp; Domain Risk Analyzer</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>🛡️</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="brand">
+    <svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5l-8-3Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="11" r="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m14.2 13.2 2.3 2.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    <div><h1>ThreatScope</h1><p>Intelligent URL &amp; Domain Risk Analyzer</p></div>
+  </header>
+
+  <form id="form" class="card search" novalidate>
+    <input id="url" type="text" placeholder="Enter a URL or domain to analyze..." autocomplete="off" spellcheck="false" aria-label="URL or domain">
+    <button id="go" type="submit">Analyze</button>
+  </form>
+  <p id="error" class="error" role="alert" hidden></p>
+  <div id="loading" class="loading" hidden><span class="spin"></span> Analyzing…</div>
+
+  <section id="results" hidden>
+    <div class="card risk" id="risk">
+      <div class="ring"><svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="52"/><circle id="arc" class="arc" cx="60" cy="60" r="52"/></svg><div class="ringtxt"><b id="score">0</b><span>/ 100</span></div></div>
+      <div class="riskinfo">
+        <span id="level" class="level"></span>
+        <dl>
+          <dt>Analyzed domain</dt><dd id="domain"></dd>
+          <dt>Normalized URL</dt><dd id="norm" class="mono"></dd>
+        </dl>
+        <p id="note" class="muted"></p>
+        <p id="why" class="muted"></p>
+      </div>
+    </div>
+
+    <h2>Security Analysis</h2>
+    <div id="grid" class="grid"></div>
+
+    <h2>Live Threat Intelligence — URLhaus</h2>
+    <div id="intel" class="card intel"></div>
+
+    <h2>Recommendations</h2>
+    <ul id="recs" class="card recs"></ul>
+  </section>
+
+  <p class="disclaimer">A low score does not guarantee a website is safe. Heuristics estimate suspicion from the address text only; ThreatScope never visits the site.</p>
+  <footer>Educational project — Heuristics + Homograph Analysis + Threat Intelligence.</footer>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
